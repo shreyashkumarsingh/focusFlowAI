@@ -1,0 +1,3 @@
+client/: Your React + TypeScript frontend.
+server/: Your Node.js + Express backend.
+ml-service/: Your Python analytics engine.
