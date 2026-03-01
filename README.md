@@ -539,10 +539,10 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for de
 
 ## 👨‍💻 Author
 
-**Your Name** - Third Year CSE Student
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+**Shreyash Kumar Singh** - Third Year CSE Student
+- GitHub: [@shreyashkumarsingh](https://github.com/shreyashkumarsingh)
+- LinkedIn: (https://www.linkedin.com/in/shreyashkrsingh)
+- Email: shreyashkrsingh@gmail.com
 
 ---
 
