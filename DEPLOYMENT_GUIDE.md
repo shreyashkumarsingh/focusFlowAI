@@ -94,8 +94,8 @@ Complete step-by-step guide to deploy FocusFlow (Frontend, Backend, ML Service) 
 6. Add Environment Variables:
    ```
    NODE_ENV=production
-   MONGO_URI=mongodb+srv://focusflow_user:PASSWORD@focusflow-cluster.xxxxx.mongodb.net/focusflow?retryWrites=true&w=majority
-   JWT_SECRET=generate_a_long_random_string_here_use_this_openssl_rand_32_-base64
+   MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/<database>?retryWrites=true&w=majority
+   JWT_SECRET=generate_a_long_random_string_here_use_openssl_rand_base64_32
    ML_SERVICE_URL=https://focusflow-ml.onrender.com
    CLIENT_URL=https://your-frontend-domain.onrender.com
    PORT=5000

@@ -97,12 +97,14 @@ MongoDB Atlas is a fully managed cloud database service that will host FocusFlow
 
 **Example connection string:**
 ```
-mongodb+srv://focusflow_user:PASSWORD@focusflow-cluster.x1y2z3a4.mongodb.net/?retryWrites=true&w=majority
+mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/?retryWrites=true&w=majority
 ```
 
 ### Replace Placeholders
-- Replace `PASSWORD` with your actual password (URL-encoded)
-- Keep database name off the end or add it: `/focusflow?...`
+- Replace `<username>` with your MongoDB database user
+- Replace `<password>` with your password (URL-encoded)
+- Replace `<cluster-name>` with your actual cluster name
+- Add database name: `/<database-name>?...`
 
 ---
 
@@ -131,7 +133,7 @@ Create a `.env` file (never commit to git):
 
 ```bash
 # Backend .env (server/.env.production)
-MONGO_URI=mongodb+srv://focusflow_user:YOUR_PASSWORD@focusflow-cluster.x1y2z3a4.mongodb.net/focusflow?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/<database>?retryWrites=true&w=majority
 ```
 
 ### Add to .gitignore
@@ -185,10 +187,10 @@ mongoose.connect(mongoUri)
 ```bash
 # Set environment variable
 # On macOS/Linux:
-export MONGO_URI="mongodb+srv://focusflow_user:PASSWORD@focusflow-cluster.x1y2z3a4.mongodb.net/focusflow?retryWrites=true&w=majority"
+export MONGO_URI="mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/<database>?retryWrites=true&w=majority"
 
 # On Windows PowerShell:
-$env:MONGO_URI="mongodb+srv://focusflow_user:PASSWORD@focusflow-cluster.x1y2z3a4.mongodb.net/focusflow?retryWrites=true&w=majority"
+$env:MONGO_URI="mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/<database>?retryWrites=true&w=majority"
 
 # Run test
 node test-db.js

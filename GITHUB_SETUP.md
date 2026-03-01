@@ -152,7 +152,7 @@ Create `server/.env.example`:
 
 NODE_ENV=development
 PORT=5000
-MONGO_URI=mongodb+srv://USER:PASSWORD@cluster.mongodb.net/focusflow
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/<database>
 JWT_SECRET=your-secret-key-here-minimum-32-characters
 ML_SERVICE_URL=http://localhost:5001
 CLIENT_URL=http://localhost:5173

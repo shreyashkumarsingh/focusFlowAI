@@ -92,10 +92,10 @@ Edit `server/.env` with your configuration:
 MONGO_URI=mongodb://localhost:27017/focusflowai
 
 # If using MongoDB Atlas:
-MONGO_URI=mongodb+srv://focusflowai_user:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/focusflowai?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/<database>?retryWrites=true&w=majority
 
 # Generate a secure random string for JWT (minimum 32 characters)
-JWT_SECRET=my_super_secret_jwt_key_change_this_in_production_abcdef123456
+JWT_SECRET=your-jwt-secret-minimum-32-characters-long
 
 # Server port
 PORT=5000

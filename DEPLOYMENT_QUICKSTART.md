@@ -40,7 +40,7 @@ git push origin main
 
 4. **Collect Info:**
    - Click "Browse Collections" → Get connection string
-   - Should look like: `mongodb+srv://USER:PASSWORD@cluster.mongodb.net/...`
+   - Should look like: `mongodb+srv://<username>:<password>@<cluster-name>.xxxxx.mongodb.net/...`
    - **Copy and save MONGO_URI**
 
 ### Network Access:
