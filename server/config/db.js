@@ -9,7 +9,12 @@ const connectDB = async () => {
         }
 
         // We use await because connecting to a cloud database takes time
-        const conn = await mongoose.connect(process.env.MONGO_URI);
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            retryWrites: true,
+            w: 'majority',
+            tlsAllowInvalidCertificates: true, // relax cert validation for dev clusters
+            serverSelectionTimeoutMS: 8000
+        });
         
         console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {

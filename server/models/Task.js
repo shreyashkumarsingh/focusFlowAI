@@ -35,15 +35,55 @@ const TaskSchema = new mongoose.Schema({
     // Time tracking for "Focus Decay" analysis
     startTime: { type: Date },
     completedAt: { type: Date },
+    dueDate: { type: Date },
+    
+    // Categories and Tags
+    category: {
+        type: String,
+        enum: ['work', 'personal', 'health', 'learning', 'other'],
+        default: 'other'
+    },
+    tags: [{
+        type: String,
+        trim: true
+    }],
+    
+    // Enhanced features
+    isRecurring: {
+        type: Boolean,
+        default: false
+    },
+    recurringPattern: {
+        type: String,
+        enum: ['daily', 'weekly', 'monthly', 'none'],
+        default: 'none'
+    },
+    notes: { type: String },
+    subtasks: [{
+        title: String,
+        completed: { type: Boolean, default: false }
+    }],
+    
+    // Focus sessions tracking
+    focusSessions: [{
+        startedAt: Date,
+        duration: Number, // in minutes
+        completed: Boolean
+    }],
     
     // Ownership
     user: {
-        type: String, // We will link this to a real User ID in Phase 2
-        required: true,
-        default: "Guest_User"
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 }, {
     timestamps: true // Automatically creates 'createdAt' and 'updatedAt'
 });
+
+// Index for better query performance
+TaskSchema.index({ user: 1, status: 1 });
+TaskSchema.index({ user: 1, category: 1 });
+TaskSchema.index({ user: 1, dueDate: 1 });
 
 module.exports = mongoose.model('Task', TaskSchema);

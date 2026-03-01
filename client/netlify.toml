@@ -1,0 +1,14 @@
+# Build settings
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Redirect rules
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (set these in Netlify dashboard)
+# VITE_API_URL
+# VITE_ML_SERVICE_URL

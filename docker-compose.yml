@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: focusflowai-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: focusflowai
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - focusflowai-network
+
+  # Backend API Server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: focusflowai-server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongodb:27017/focusflowai
+      - JWT_SECRET=${JWT_SECRET:-change_this_secret_in_production}
+      - ML_SERVICE_URL=http://ml-service:5001
+      - CLIENT_URL=${CLIENT_URL:-http://localhost:3000}
+    depends_on:
+      - mongodb
+      - ml-service
+    networks:
+      - focusflowai-network
+
+  # ML Analytics Service
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    container_name: focusflowai-ml
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    networks:
+      - focusflowai-network
+
+  # Frontend Client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: focusflowai-client
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:5000/api
+      - VITE_ML_SERVICE_URL=http://localhost:5001
+    depends_on:
+      - server
+    networks:
+      - focusflowai-network
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  focusflowai-network:
+    driver: bridge

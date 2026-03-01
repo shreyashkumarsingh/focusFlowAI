@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: focusflow-ml
+    runtime: python-3
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:5001 --workers 2 --timeout 60 app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_DEBUG
+        value: "0"
+      - key: PORT
+        value: 5001
+      - key: CORS_ORIGINS
+        value: "*"

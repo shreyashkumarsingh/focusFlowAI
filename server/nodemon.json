@@ -1,0 +1,8 @@
+{
+  "watch": ["server.js", "routes", "controllers", "models", "middleware", "config"],
+  "ext": "js,json",
+  "ignore": ["node_modules", "client", "ml-service"],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

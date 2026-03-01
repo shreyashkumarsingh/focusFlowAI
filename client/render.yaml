@@ -1,0 +1,12 @@
+services:
+  - type: static_site
+    name: focusflow-web
+    plan: free
+    branch: main
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://focusflow-api.onrender.com/api
+      - key: VITE_ML_SERVICE_URL
+        value: https://focusflow-ml.onrender.com

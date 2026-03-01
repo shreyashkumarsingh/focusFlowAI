@@ -1,8 +1,6 @@
 // server/routes/taskroutes.js
 const express = require('express');
 const router = express.Router();
-
-// 1. Import all four controller functions
 const { 
     getTasks, 
     createTask, 
@@ -10,19 +8,17 @@ const {
     deleteTask 
 } = require('../controllers/taskController');
 
-// 2. Route for the root path: /api/tasks
-// GET /api/tasks -> Fetches all tasks
-// POST /api/tasks -> Creates a new task
-router.route('/')
-    .get(getTasks)
-    .post(createTask);
+// 1. Import the guard
+const { protect } = require('../middleware/authMiddleware');
 
-// 3. Route for specific tasks: /api/tasks/:id
-// The ":id" is a placeholder for the MongoDB _id
-// PUT /api/tasks/123 -> Updates task with ID 123
-// DELETE /api/tasks/123 -> Deletes task with ID 123
+// 2. Add 'protect' to any route you want to keep private
+// Now, a user MUST be logged in to do any of these
+router.route('/')
+    .get(protect, getTasks)
+    .post(protect, createTask);
+
 router.route('/:id')
-    .put(updateTask)
-    .delete(deleteTask);
+    .put(protect, updateTask)
+    .delete(protect, deleteTask);
 
 module.exports = router;
