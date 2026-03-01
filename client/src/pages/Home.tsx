@@ -58,41 +58,41 @@ const Home = () => {
       </section>
 
       {/* Features Grid */}
-      <section style={styles.featuresSection()}>
+      <section style={styles.featuresSection(isDark)}>
         <h2 style={styles.sectionTitle}>Why Students Love FocusFlowAI</h2>
         
         <div style={styles.features}>
-          <div style={styles.featureCard()}>
+          <div style={styles.featureCard(isDark)}>
             <Zap color="white" size={32} />
             <h3>⚡ 90%+ Accurate Predictions</h3>
             <p>Neural networks analyze your patterns to predict task durations with industry-leading accuracy.</p>
           </div>
 
-          <div style={styles.featureCard()}>
+          <div style={styles.featureCard(isDark)}>
             <Brain color="white" size={32} />
             <h3>🧠 Burnout Prevention</h3>
             <p>AI detects stress patterns 2 weeks before burnout occurs. Stay healthy, not just productive.</p>
           </div>
 
-          <div style={styles.featureCard()}>
+          <div style={styles.featureCard(isDark)}>
             <Target color="white" size={32} />
             <h3>🎯 Smart Recommendations</h3>
             <p>Get personalized suggestions to optimize your workflow based on your unique study habits.</p>
           </div>
 
-          <div style={styles.featureCard()}>
+          <div style={styles.featureCard(isDark)}>
             <BarChart3 color="white" size={32} />
             <h3>📊 Real-time Analytics</h3>
             <p>Beautiful dashboards show your progress, streak records, and productivity trends instantly.</p>
           </div>
 
-          <div style={styles.featureCard()}>
+          <div style={styles.featureCard(isDark)}>
             <Rocket color="white" size={32} />
             <h3>🚀 Lightning Fast</h3>
             <p>Built with modern tech stack. API response time under 100ms. Smooth as butter.</p>
           </div>
 
-          <div style={styles.featureCard()}>
+          <div style={styles.featureCard(isDark)}>
             <Shield color="white" size={32} />
             <h3>🔒 Bank-Level Security</h3>
             <p>Your data is encrypted with JWT & bcrypt. Privacy first, always.</p>
@@ -101,20 +101,20 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section style={styles.statsSection()}>
-        <div style={styles.statBox()}>
+      <section style={styles.statsSection(isDark)}>
+        <div style={styles.statBox(isDark)}>
           <h2 style={styles.statNumber}>1000+</h2>
           <p>Students Using</p>
         </div>
-        <div style={styles.statBox()}>
+        <div style={styles.statBox(isDark)}>
           <h2 style={styles.statNumber}>500K+</h2>
           <p>Tasks Completed</p>
         </div>
-        <div style={styles.statBox()}>
+        <div style={styles.statBox(isDark)}>
           <h2 style={styles.statNumber}>85%</h2>
           <p>Burnout Prevention</p>
         </div>
-        <div style={styles.statBox()}>
+        <div style={styles.statBox(isDark)}>
           <h2 style={styles.statNumber}>24/7</h2>
           <p>Cloud Deployed</p>
         </div>
@@ -131,7 +131,7 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer style={styles.footer()}>
+      <footer style={styles.footer(isDark)}>
         <p>© 2026 FocusFlowAI. Built for students, by developers. ❤️</p>
         <div style={styles.footerLinks}>
           <a href="#" style={styles.footerLink()}>Privacy</a>
@@ -286,9 +286,9 @@ const styles = {
     cursor: 'pointer',
     display: 'inline-block',
   }),
-  featuresSection: (): React.CSSProperties => ({
+  featuresSection: (isDark: boolean): React.CSSProperties => ({
     padding: '100px 10%',
-    backgroundColor: 'linear-gradient(180deg, #fef3c7 0%, #dbeafe 50%, #e9d5ff 100%)',
+    backgroundColor: isDark ? 'var(--bg-secondary)' : 'linear-gradient(180deg, #fef3c7 0%, #dbeafe 50%, #e9d5ff 100%)',
     backgroundAttachment: 'fixed',
   }),
   sectionTitle: {
@@ -308,34 +308,34 @@ const styles = {
     gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
     gap: '30px',
   },
-  featureCard: (): React.CSSProperties => ({
+  featureCard: (isDark: boolean): React.CSSProperties => ({
     padding: '40px 30px',
     borderRadius: '16px',
-    backgroundColor: 'rgba(255, 255, 255, 0.85)',
-    border: '2px solid rgba(255, 255, 255, 0.95)',
+    backgroundColor: isDark ? 'var(--bg-tertiary)' : 'rgba(255, 255, 255, 0.85)',
+    border: isDark ? '2px solid var(--border)' : '2px solid rgba(255, 255, 255, 0.95)',
     textAlign: 'center',
-    boxShadow: '0 8px 32px rgba(59, 130, 246, 0.15)',
+    boxShadow: isDark ? '0 8px 32px rgba(0, 0, 0, 0.3)' : '0 8px 32px rgba(59, 130, 246, 0.15)',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
     position: 'relative',
     overflow: 'hidden',
     backdropFilter: 'blur(10px)',
   }),
-  statsSection: (): React.CSSProperties => ({
+  statsSection: (isDark: boolean): React.CSSProperties => ({
     padding: '80px 10%',
-    backgroundColor: 'linear-gradient(180deg, #fecaca 0%, #fca5a5 50%, #fed7aa 100%)',
+    backgroundColor: isDark ? 'var(--bg-primary)' : 'linear-gradient(180deg, #fecaca 0%, #fca5a5 50%, #fed7aa 100%)',
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
     gap: '40px',
     backgroundAttachment: 'fixed',
   }),
-  statBox: (): React.CSSProperties => ({
+  statBox: (isDark: boolean): React.CSSProperties => ({
     textAlign: 'center' as const,
     padding: '40px 20px',
     borderRadius: '12px',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    border: '2px solid rgba(255, 255, 255, 0.9)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+    backgroundColor: isDark ? 'var(--bg-secondary)' : 'rgba(255, 255, 255, 0.8)',
+    border: isDark ? '2px solid var(--border)' : '2px solid rgba(255, 255, 255, 0.9)',
+    boxShadow: isDark ? '0 8px 32px rgba(0, 0, 0, 0.3)' : '0 8px 32px rgba(0, 0, 0, 0.1)',
     backdropFilter: 'blur(10px)',
   }),
   statNumber: {
@@ -397,10 +397,10 @@ const styles = {
     cursor: 'pointer',
     display: 'inline-block',
   }),
-  footer: (): React.CSSProperties => ({
+  footer: (isDark: boolean): React.CSSProperties => ({
     padding: '40px 10%',
     borderTop: '1px solid var(--border)',
-    backgroundColor: 'linear-gradient(180deg, #f0f9ff 0%, #f5f7ff 100%)',
+    backgroundColor: isDark ? 'var(--bg-secondary)' : 'linear-gradient(180deg, #f0f9ff 0%, #f5f7ff 100%)',
     textAlign: 'center' as const,
     color: 'var(--text-secondary)',
     fontSize: '14px',
